@@ -1,0 +1,75 @@
+[
+    {
+      "id": 1,
+      "estate_title": "Modern Family Home",
+      "segment_name": "Residential",
+      "description": "A beautiful single-family home located in a quiet suburb with easy access to schools and shopping centers.",
+      "price": "$350,000",
+      "status": "sale",
+      "area": "2500 sq ft",
+      "location": "Los Angeles, CA",
+      "facilities": ["3 bedrooms", "2 bathrooms", "Living room", "Modern kitchen", "Garage", "Garden"],
+      "image": "https://i.ibb.co.com/gZ4bHdd9/dam-images-resources-2012-01-modern-family-sets-modern-family-01-jay-gloria-pritchett.webp"
+    },
+    {
+      "id": 2,
+      "estate_title": "Downtown Apartment",
+      "segment_name": "Residential",
+      "description": "A stylish downtown apartment with a view of the city skyline, perfect for young professionals.",
+      "price": "$1,500/month",
+      "status": "rent",
+      "area": "850 sq ft",
+      "location": "New York, NY",
+      "facilities": ["1 bedroom", "1 bathroom", "Open-plan kitchen", "City view", "Gym access", "Balcony"],
+      "image": "https://i.ibb.co.com/ZRfDWB2B/502849039.jpg"
+    },
+    {
+      "id": 3,
+      "estate_title": "Luxury Beachfront Villa",
+      "segment_name": "Residential",
+      "description": "A luxurious villa with direct access to the beach, featuring modern amenities and stunning ocean views.",
+      "price": "$1,200,000",
+      "status": "sale",
+      "area": "4000 sq ft",
+      "location": "Miami, FL",
+      "facilities": ["5 bedrooms", "4 bathrooms", "Swimming pool", "Private beach", "Modern kitchen", "Parking"],
+      "image": "https://i.ibb.co.com/Y7Tczcgn/313493790.jpg"
+    },
+    {
+      "id": 4,
+      "estate_title": "Cozy Student Apartment",
+      "segment_name": "Residential",
+      "description": "Affordable student apartment located near the university with easy access to public transport.",
+      "price": "$800/month",
+      "status": "rent",
+      "area": "600 sq ft",
+      "location": "Austin, TX",
+      "facilities": ["1 bedroom", "1 bathroom", "Shared kitchen", "Study area", "Public transport access"],
+      "image": "https://i.ibb.co.com/k2gwrVzc/524260839.jpg"
+    },
+    {
+      "id": 5,
+      "estate_title": "Senior Living Community Home",
+      "segment_name": "Residential",
+      "description": "A well-maintained home in a senior living community with on-site healthcare and recreation facilities.",
+      "price": "$220,000",
+      "status": "sale",
+      "area": "1200 sq ft",
+      "location": "Phoenix, AZ",
+      "facilities": ["2 bedrooms", "2 bathrooms", "Living room", "Healthcare center", "Community hall", "Garden"],
+      "image": "https://i.ibb.co.com/ccWt03dL/Spring-Harbor-Retirement-Community-Columbus-Georgia.jpg"
+    },
+    {
+      "id": 6,
+      "estate_title": "Vacation Cabin Retreat",
+      "segment_name": "Residential",
+      "description": "A peaceful vacation cabin surrounded by nature, perfect for weekend getaways and family retreats.",
+      "price": "$400/night",
+      "status": "rent",
+      "area": "1800 sq ft",
+      "location": "Lake Tahoe, CA",
+      "facilities": ["3 bedrooms", "2 bathrooms", "Living room", "Fireplace", "Kitchen", "Outdoor deck"],
+      "image": "https://i.ibb.co.com/Kj4D0wkw/displaypicture.jpg"
+    }
+  ]
+  
