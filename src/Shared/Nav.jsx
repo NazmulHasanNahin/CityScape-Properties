@@ -114,7 +114,7 @@ const Nav = () => {
                                     Login
                                 </button>
                             </Link>
-                            <Link to="/signup">
+                            <Link to="/register">
                                 <button className="btn bg-red-400 text-white">
                                     Sign Up
                                 </button>

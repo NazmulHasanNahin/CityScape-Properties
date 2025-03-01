@@ -7,6 +7,8 @@ import Errorpage from "../Pages/Errorpage";
 import Home from "../Home/Home";
 import UserProfile from "../Pages/UserProfile";
 import UpdateProfile from "../Pages/UpdateProfile";
+import SignIn from "../AuthPages/SignIn";
+import Register from "../AuthPages/Register";
 
 
 
@@ -28,6 +30,14 @@ const Routes = createBrowserRouter([
             {
                 path: "/update_profile",
                 element:<UpdateProfile></UpdateProfile>,
+            },
+            {
+                path: "/login",
+                element:<SignIn></SignIn>,
+            },
+            {
+                path: "/register",
+                element:<Register></Register>,
             },
             
 

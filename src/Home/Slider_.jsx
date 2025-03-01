@@ -29,7 +29,7 @@ const Slider_ = () => {
 
   const sliderImageStyle = {
     width: "100%",
-    height: "500px", // Slightly taller for a more immersive feel
+    height: "500px", 
     objectFit: "cover",
     borderRadius: "10px",
   };
@@ -51,7 +51,7 @@ const Slider_ = () => {
         {/* Slide 1 */}
         <div>
           <img
-            src="https://i.ibb.co/5WDc73cB/DZDQRXPFSNFLPIJJW3-SEHQZWIE.jpg"
+            src="https://i.ibb.co.com/J0j09xS/bunglow-01-1240x720.jpg"
             alt="CityScape - Modern Living"
             style={sliderImageStyle}
           />
@@ -64,7 +64,7 @@ const Slider_ = () => {
         {/* Slide 2 */}
         <div>
           <img
-            src="https://i.ibb.co/gF4NDPQV/im-90371359.jpg"
+            src="https://i.ibb.co.com/My7SSBVT/bedroom-02-1240x720.jpg"
             alt="RiverView Homes"
             style={sliderImageStyle}
           />
@@ -77,7 +77,7 @@ const Slider_ = () => {
         {/* Slide 3 */}
         <div>
           <img
-            src="https://i.ibb.co/SDwmt57j/Urban-Heights-1.jpg"
+            src="https://i.ibb.co.com/GymKCBT/exterior-05-1240x720.jpg"
             alt="Urban Heights"
             style={sliderImageStyle}
           />
@@ -90,7 +90,7 @@ const Slider_ = () => {
         {/* Slide 4 */}
         <div>
           <img
-            src="https://i.ibb.co/mVdRF8hs/13b96da8f2314e77b1d73580820deab7-Large.jpg"
+            src="https://i.ibb.co.com/tP45YDBg/living-00-1240x720.jpg"
             alt="Hillside Villas"
             style={sliderImageStyle}
           />
