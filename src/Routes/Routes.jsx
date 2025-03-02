@@ -9,6 +9,7 @@ import UserProfile from "../Pages/UserProfile";
 import UpdateProfile from "../Pages/UpdateProfile";
 import SignIn from "../AuthPages/SignIn";
 import Register from "../AuthPages/Register";
+import Property from "../Property/Property";
 
 
 
@@ -38,6 +39,11 @@ const Routes = createBrowserRouter([
             {
                 path: "/register",
                 element:<Register></Register>,
+            },
+            {
+                path: "/property/:id",
+                element:<Property></Property>,
+                loader:() => fetch("/prop_data.json"),
             },
             
 
