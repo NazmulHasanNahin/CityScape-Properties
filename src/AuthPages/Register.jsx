@@ -1,11 +1,41 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { Link } from 'react-router-dom';
 import Nav from '../Shared/Nav';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const Register = () => {
     const [isPasswordShown, setIsPasswordShown] = useState(false);
+
+    const { createUser, createUserGoogle } = useContext(AuthContext);
+
+    const handleRegister = e => {
+        e.preventDefault();
+
+        const form = new FormData(e.currentTarget);
+        const email = form.get('email');
+        const password = form.get('password');
+        console.log('Registering user:', { email, password });
+
+
+        createUser(email, password)
+            .then(result => {
+                console.log(result.user);
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    };
+    const handleGoogle = () => {
+        createUserGoogle()
+            .then(result => {
+                console.log(result.user);
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    };
 
     return (
         <div>
@@ -16,7 +46,7 @@ const Register = () => {
                     <h2 className="text-center text-2xl font-semibold mb-6">Sign up with</h2>
 
                     <div className="flex gap-4 mb-6">
-                        <button className="flex items-center justify-center w-full py-2 px-4 rounded-lg border border-gray-300 bg-gray-50 hover:bg-gray-200 transition">
+                        <button onClick={handleGoogle} className="flex items-center justify-center w-full py-2 px-4 rounded-lg border border-gray-300 bg-gray-50 hover:bg-gray-200 transition">
                             <img src="google.svg" alt="Google" className="w-5 mr-2" />
                             Google
                         </button>
@@ -26,13 +56,14 @@ const Register = () => {
                         <span className="bg-white px-3 text-gray-600">or</span>
                     </div>
 
-                    <form className="space-y-4">
+                    <form className="space-y-4" onSubmit={handleRegister}>
                         <div className="relative">
                             <input
                                 name="email"
                                 type="email"
                                 placeholder="Email address"
                                 className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-indigo-500 transition"
+                                aria-label="Email"
                                 required
                             />
                         </div>
@@ -43,11 +74,13 @@ const Register = () => {
                                 type={isPasswordShown ? 'text' : 'password'}
                                 placeholder="Password"
                                 className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-indigo-500 transition"
+                                aria-label="Password"
                                 required
                             />
                             <i
                                 onClick={() => setIsPasswordShown(prev => !prev)}
                                 className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500"
+                                aria-label="Toggle Password Visibility"
                             >
                                 {isPasswordShown ? <IoMdEye /> : <IoMdEyeOff />}
                             </i>

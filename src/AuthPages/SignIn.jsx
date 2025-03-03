@@ -1,12 +1,32 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Nav from '../Shared/Nav';
-
+import { AuthContext } from '../Provider/AuthProvider';
 
 const SignIn = () => {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
+  const {createUserGoogle} = useContext(AuthContext);
+
+  const handleLogin = e => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const email = form.get('email');
+    const password = form.get('password');
+
+    console.log('sign in user:', { email, password });
+
+  };
+  const handleGoogle = () => {
+    createUserGoogle()
+        .then(result => {
+            console.log(result.user);
+        })
+        .catch(error => {
+            console.error(error);
+        })
+};
 
   return (
     <div>
@@ -17,7 +37,7 @@ const SignIn = () => {
           <h2 className="text-center text-2xl font-semibold mb-6">Log in with</h2>
 
           <div className="flex gap-4 mb-6">
-            <button className="flex items-center justify-center w-full py-2 px-4 rounded-lg border border-gray-300 bg-gray-50 hover:bg-gray-200 transition">
+            <button onClick={handleGoogle} className="flex items-center justify-center w-full py-2 px-4 rounded-lg border border-gray-300 bg-gray-50 hover:bg-gray-200 transition">
               <img src="google.svg" alt="Google" className="w-5 mr-2" />
               Google
             </button>
@@ -27,7 +47,8 @@ const SignIn = () => {
             <span className="bg-white px-3 text-gray-600">or</span>
           </div>
 
-          <form className="space-y-4">
+
+          <form className="space-y-4" onSubmit={handleLogin}>
             <div className="relative">
               <input
                 name="email"
