@@ -4,6 +4,9 @@ import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { Link } from 'react-router-dom';
 import Nav from '../Shared/Nav';
 import { AuthContext } from '../Provider/AuthProvider';
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css"
+
 
 const Register = () => {
     const [isPasswordShown, setIsPasswordShown] = useState(false);
@@ -21,18 +24,22 @@ const Register = () => {
 
         createUser(email, password)
             .then(result => {
+                toast.success('Successfully Account Created');
                 console.log(result.user);
             })
             .catch(error => {
+                toast.error('Failed to Create Account');
                 console.error(error);
             })
     };
     const handleGoogle = () => {
         createUserGoogle()
             .then(result => {
+                toast.success('Successfully Register with Google!');
                 console.log(result.user);
             })
             .catch(error => {
+                toast.error('Failed to Register with Google');
                 console.error(error);
             })
     };

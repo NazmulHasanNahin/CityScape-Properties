@@ -4,29 +4,45 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Nav from '../Shared/Nav';
 import { AuthContext } from '../Provider/AuthProvider';
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css"
 
 const SignIn = () => {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
-  const {createUserGoogle} = useContext(AuthContext);
+  const { createUserGoogle } = useContext(AuthContext);
+  const { signInUser } = useContext(AuthContext);
+
 
   const handleLogin = e => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const email = form.get('email');
     const password = form.get('password');
-
     console.log('sign in user:', { email, password });
+
+
+    signInUser(email, password)
+      .then(result => {
+        toast.success('Successfully logged in!');
+        console.log(result.user);
+      })
+      .catch(error => {
+        toast.error('Failed to log in');
+        console.error(error);
+      })
 
   };
   const handleGoogle = () => {
     createUserGoogle()
-        .then(result => {
-            console.log(result.user);
-        })
-        .catch(error => {
-            console.error(error);
-        })
-};
+      .then(result => {
+        toast.success('Successfully logged in with Google!');
+        console.log(result.user);
+      })
+      .catch(error => {
+        toast.error('Failed to log in with Google');
+        console.error(error);
+      })
+  };
 
   return (
     <div>
@@ -77,7 +93,7 @@ const SignIn = () => {
 
             <a href="#" className="text-sm text-indigo-600 hover:underline block">Forgot password?</a>
 
-            <button
+            <button onSubmit={signInUser}
               type="submit"
               className="w-full py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition font-medium"
             >
@@ -93,6 +109,7 @@ const SignIn = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
