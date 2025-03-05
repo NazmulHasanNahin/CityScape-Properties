@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Nav from '../Shared/Nav';
 import { AuthContext } from '../Provider/AuthProvider';
@@ -11,6 +11,10 @@ const SignIn = () => {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
   const { createUserGoogle } = useContext(AuthContext);
   const { signInUser } = useContext(AuthContext);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log(location);
 
 
   const handleLogin = e => {
@@ -23,6 +27,7 @@ const SignIn = () => {
 
     signInUser(email, password)
       .then(result => {
+        navigate(location?.state ? location.state : "/");
         toast.success('Successfully logged in!');
         console.log(result.user);
       })
@@ -35,6 +40,7 @@ const SignIn = () => {
   const handleGoogle = () => {
     createUserGoogle()
       .then(result => {
+        navigate(location?.state ? location.state : "/");
         toast.success('Successfully logged in with Google!');
         console.log(result.user);
       })

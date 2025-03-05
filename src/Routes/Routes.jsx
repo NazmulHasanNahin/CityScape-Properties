@@ -1,6 +1,6 @@
 import {
     createBrowserRouter,
-    
+
 } from "react-router-dom";
 import Root from "../Layouts/Root";
 import Errorpage from "../Pages/Errorpage";
@@ -10,6 +10,7 @@ import UpdateProfile from "../Pages/UpdateProfile";
 import SignIn from "../AuthPages/SignIn";
 import Register from "../AuthPages/Register";
 import Property from "../Property/Property";
+import PrivateRoute from "../Provider/PrivateRoute";
 
 
 
@@ -22,30 +23,30 @@ const Routes = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element:<Home></Home>,
+                element: <Home></Home>,
             },
             {
                 path: "/user_profile",
-                element:<UserProfile></UserProfile>
+                element:<PrivateRoute><UserProfile></UserProfile></PrivateRoute>,
             },
             {
                 path: "/update_profile",
-                element:<UpdateProfile></UpdateProfile>,
+                element: <UpdateProfile></UpdateProfile>,
             },
             {
                 path: "/login",
-                element:<SignIn></SignIn>,
+                element: <SignIn></SignIn>,
             },
             {
                 path: "/register",
-                element:<Register></Register>,
+                element: <Register></Register>,
             },
             {
                 path: "/property/:id",
-                element:<Property></Property>,
-                loader:() => fetch("/prop_data.json"),
+                element: <PrivateRoute><Property></Property></PrivateRoute>,
+                loader: () => fetch("/prop_data.json"),
             },
-            
+
 
         ]
     },

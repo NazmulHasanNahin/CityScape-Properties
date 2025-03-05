@@ -1,21 +1,17 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { Link, NavLink } from "react-router-dom";
+import {  useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Nav = () => {
-    const location = useLocation();
-    const [user, setUser] = useState(null); 
-
     const isActive = (path) => location.pathname === path;
-
-    useEffect(() => {
-        const loggedUser = localStorage.getItem("user");
-        setUser(loggedUser ? JSON.parse(loggedUser) : null);
-    }, []);
+    const { logOut, user } = useContext(AuthContext);
 
     const handleLogout = () => {
-        setUser(null);
-        localStorage.removeItem("user");
-    };
+        logOut()
+            .then()
+            .catch()
+    }
+
 
     return (
         <div>
@@ -96,9 +92,12 @@ const Nav = () => {
                     {user ? (
                         <>
                             <div className="flex items-center space-x-2">
+                                <div>
+                                    <h1>{user.displayName || ""}</h1>
+                                </div>
                                 <div className="avatar">
                                     <div className="w-10 rounded-full">
-                                        <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" alt="User Profile" />
+                                        <img src={user.photoURL || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"} alt="User Profile" />
                                     </div>
                                 </div>
                                 <span className="text-lg font-semibold">{user.name}</span>
